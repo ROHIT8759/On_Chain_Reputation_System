@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import reputationRoutes from '../routes/reputation';
+import reputationRoutes from './routes/reputation';
 
 const app = express();
 const PORT = 5000;

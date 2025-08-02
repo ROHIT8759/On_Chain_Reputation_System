@@ -12,8 +12,9 @@ router.post('/score', async (req, res) => {
   try {
     const scores = await generateReputationScores(addresses);
     res.json({ scores });
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to calculate scores', details: err?.message });
+  } catch (err: any) {
+    const message = err && typeof err === 'object' && 'message' in err ? (err as Error).message : String(err);
+    res.status(500).json({ error: 'Failed to calculate scores', details: message });
   }
 });
 
